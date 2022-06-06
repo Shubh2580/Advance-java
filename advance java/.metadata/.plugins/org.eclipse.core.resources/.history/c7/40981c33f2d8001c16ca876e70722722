@@ -1,0 +1,5 @@
+package in.marksheet.bean;
+
+public class MarksheetBean {
+
+}

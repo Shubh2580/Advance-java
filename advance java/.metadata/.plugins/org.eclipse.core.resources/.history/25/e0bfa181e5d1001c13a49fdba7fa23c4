@@ -1,0 +1,16 @@
+package Driver;
+
+public class ComboPooledDataSource {
+ ComboPooledDataSource ds= new ComboPooledDataSource()
+
+public void setDriverClass(String string) {
+	// TODO Auto-generated method stub
+	
+}
+
+public void setJdbcUrl(String string) {
+	// TODO Auto-generated method stub
+	
+} 
+}
+}

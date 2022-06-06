@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+</head>
+<body align="center">
+	<form action="login"  method="post">
+		<h1 align="center">Login</h1>
+		<%
+				String err = (String) request.getAttribute("err");
+				if (err != null) {
+			%><font color="red"> <%=err%></font>
+			<%
+				}
+			%>
+		
+		<table align="center">
+			<tr>
+				<th>LoginId*</th>
+				<td><input type="text" name="login" value=""></td>
+			</tr>
+			<tr>
+				<th>Password*</th>
+				<td><input type="password" name="pwd" value=""></td>
+			</tr>
+           <tr>
+				<td align="center" colspan="2" style="margin-left: 100px">
+				<input type="submit"  value="Login">
+				<input type="submit"  value="SignUp" name="UserRegistrationView.jsp">
+				</td>
+			</tr>
+		
+		</table>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Header</title>
+</head>
+<body>
+<center>
+<img src="logo.png" >hi</center>
+<%String user=(String)request.getAttribute("user");
+if(user!=null){
+%>
+
+
+<hr>
+<a href="index.jsp">Index</a>
+<a href="LoginView.jsp">Login</a>
+<a href="LogoutView.jsp">Logout</a>
+
+<a href="UserRegistrationView.jsp">Sign-up</a>
+<%} %>
+
+</body>
+</html>

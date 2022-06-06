@@ -1,0 +1,44 @@
+package in.co.rays.test;
+
+import java.text.SimpleDateFormat;
+
+import in.co.rays.bean.LoginBean;
+import in.co.rays.model.LoginModel;
+
+public class LoginTest {
+	public static void main(String[] args) throws Exception {
+		testAuthenticate();
+	}
+	
+
+	
+private static void testAuthenticate() throws Exception {
+	LoginBean bean = new LoginBean();
+	
+   
+     bean.setLogin("shubhamgeete");
+		bean.setPassword("12345");
+	
+		
+		LoginModel model = new LoginModel();
+		model.add(bean);
+		
+	
+		
+		LoginBean bean1 = null;
+		try {
+			bean1 = model.authenticate(bean);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (bean1 == null) {
+			System.out.println("Invalid User");
+		} else {
+			System.out.println("Congratulations....!!!");
+		}
+
+	}
+
+		
+}

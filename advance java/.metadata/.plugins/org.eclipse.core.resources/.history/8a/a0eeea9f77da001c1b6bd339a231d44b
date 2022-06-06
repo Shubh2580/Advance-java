@@ -1,0 +1,112 @@
+package in.co.rays.ctl;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import in.co.rays.bean.LoginBean;
+import in.co.rays.model.DataValidator;
+import in.co.rays.model.LoginModel;
+
+@WebServlet(urlPatterns = "/reg")
+
+public class UserRegistrationCtl extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("doget");
+
+	}
+
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("do post");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		String fname = req.getParameter("fname");
+		String lname = req.getParameter("lname");
+		String login = req.getParameter("login");
+		String pwd = req.getParameter("pwd");
+		String gender = req.getParameter("gender");
+		String dob = req.getParameter("dob");
+		String mob = req.getParameter("mob");
+		//String[] address = null;
+
+		LoginBean bean = new LoginBean();
+
+		bean.setFirstName(fname);
+		bean.setLastName(lname);
+		bean.setLogin(login);
+		bean.setPassword(pwd);
+		bean.setGender(gender);
+
+		try {
+			bean.setDob(sdf.parse(dob));
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		}
+
+		bean.setMobileNo(mob);
+	
+		
+		DataValidator d = new DataValidator();
+		
+		if(d.isNull(fname)) {
+			req.setAttribute("err1","first name is required");
+		if(d.isNull(lname)) {
+			req.setAttribute("err2", "last name is required");
+			
+		}if(d.isNull(login)) {
+			req.setAttribute("err3", "login is required");
+			
+		}if(d.isNull(pwd)) {
+			req.setAttribute("err4", "password is required");
+			
+		}if(d.isNull(gender)) {
+			req.setAttribute("err5", "gender is required");
+			
+		}if(d.isNull(dob)) {
+			req.setAttribute("err6", " date of birth is required");
+			
+		}if(d.isNull(mob)) {
+			req.setAttribute("err7", "mobile number is required");
+		}
+		RequestDispatcher rd = req.getRequestDispatcher("UserRegistrationView.jsp");
+		rd.forward(req, resp);
+		}
+		else {
+
+			LoginModel model = new LoginModel();
+			
+				
+				
+					RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
+					
+					rd.forward(req, resp);
+					try {
+						model.add(bean);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					}
+				
+			}
+		
+	
+	
+	}
+
+	
+
+
+		

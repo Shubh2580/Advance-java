@@ -1,0 +1,7 @@
+package Result;
+
+public class appproperties {
+public static void main(String[] args) {
+	
+}
+}

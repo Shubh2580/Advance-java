@@ -1,0 +1,26 @@
+package Result;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class MarksheetModel {
+	public void add(MarksheetBean bean) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/rays", "root", "root");
+		conn.setAutoCommit(false);
+		PreparedStatement ps = conn.prepareStatement("Insert into result values (?,?,?,?,?,?,?)");
+		ps.setInt(1, bean.getId());
+		ps.setInt(2, bean.getRollNo());
+		ps.setString(3, bean.getFname());
+		ps.setString(4, bean.getLname());
+		ps.setInt(5, bean.getPhy());
+		ps.setInt(6, bean.getChem());
+		ps.setInt(7, bean.getMaths());
+
+		int i = ps.executeUpdate();
+		conn.commit();
+		System.out.println("Inserted : " + i);
+
+	}
+}

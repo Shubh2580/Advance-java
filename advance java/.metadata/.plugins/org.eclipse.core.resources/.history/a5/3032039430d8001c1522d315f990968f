@@ -1,0 +1,12 @@
+package in.co.rays.ctl;
+
+public class Snippet {
+	<%
+					String err = (String) request.getAttribute("err");
+					if (err != null) {
+				%><font color="red"> <%=err%></font>
+				<%
+					}
+				%>
+}
+

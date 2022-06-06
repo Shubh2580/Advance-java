@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>registration Form</title>
+</head>
+<body>
+<body align="center">
+	<form action=" " >
+		<h1>User Registration</h1>
+		<table align="center">
+
+			<tr>
+				<th>First Name*</th>
+				<td><input type="text" name="fname" value=""></td>
+			</tr>
+			<tr>
+				<th>Last Name*</th>
+				<td><input type="text" name="lname" value=""></td>
+			</tr>
+				<tr>
+				<th>Login*</th>
+				<td><input type="text" name="login" value=""></td>
+			</tr>
+			<tr>
+				<th>Password*</th>
+				<td><input type="password" name="pwd" value=""></td>
+			</tr>
+				<tr>
+				<th>Gender</th>
+				<td><select name='gender' style="margin-right: 110px">
+						<option value='F' >Female</option>
+						<option value='M'>Male</option>
+				</select></td>
+			</tr>
+
+			<tr>
+				<td ><b>Date Of Birth</b> </td>
+				<td ><input type="date" name="dob" style="margin-right: 60px"></td>
+			</tr>
+			<tr>
+				<th>Mobile-No*</th>
+				<td><input type="text" name="mob" value=""></td>
+			</tr>
+			
+			
+			
+			<tr>
+				<td align="center" colspan="2" style="margin-left: 100px">
+				<input type="submit" name="operation" value="Registration">
+				<input type="reset" name="operation" value="reset"></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>

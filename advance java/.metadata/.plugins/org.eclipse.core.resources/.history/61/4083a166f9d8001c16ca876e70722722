@@ -1,0 +1,105 @@
+package in.co.rays.model;
+
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import in.co.rays.bean.LoginBean;
+
+public class LoginModel {
+
+	public Integer nextPk() throws Exception {
+		int pk = 0;
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
+
+		PreparedStatement ps = conn.prepareStatement("select max(id) from user");
+		ResultSet rs = ps.executeQuery();
+
+		while (rs.next()) {
+
+			pk = rs.getInt(1);
+
+		}
+		return pk + 1;
+
+	}
+
+	public void add(LoginBean bean) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
+		conn.setAutoCommit(false);
+		PreparedStatement ps = conn.prepareStatement("insert into user values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		ps.setInt(1, nextPk());
+		ps.setString(2, bean.getFirstName());
+		ps.setString(3, bean.getLastName());
+		ps.setString(4, bean.getLogin());
+		ps.setString(5, bean.getPassword());
+		ps.setString(6, bean.getGender());
+		ps.setDate(7, new java.sql.Date(bean.getDob().getTime()));
+		ps.setString(8, bean.getMobileNo());
+		
+		
+		for(String s:bean.getAddress()) {
+			ps.setString(9, s);
+		}
+			
+
+		int i = ps.executeUpdate();
+		conn.commit();
+		System.out.println(i + ":Record Inserted");
+		ps.close();
+		conn.close();
+
+	
+}
+	public LoginBean authenticate(LoginBean bean) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/advance", "root", "root");
+
+		PreparedStatement ps = conn.prepareStatement("select * from user where login = ? and password = ?");
+		ps.setString(1, bean.getLogin());
+		ps.setString(2, bean.getPassword());
+		ResultSet rs = ps.executeQuery();
+		LoginBean bean1 = null;
+		while (rs.next()) {
+			bean1 = new LoginBean();
+			bean1.setId(rs.getInt(1));
+			bean1.setFirstName(rs.getString(2));
+			bean1.setLastName(rs.getString(3));
+			bean1.setLogin(rs.getString(4));
+			bean1.setPassword(rs.getString(5));
+			bean1.setGender(rs.getString(6));
+			bean1.setDob(rs.getDate(7));
+			bean1.setMobileNo(rs.getString(8));
+
+		}
+		return bean1;
+	
+}
+	public LoginBean findByLogin(LoginBean bean) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
+
+		PreparedStatement ps = conn.prepareStatement("select * from user where login = ?");
+		ps.setString(1, bean.getLogin());
+		ResultSet rs = ps.executeQuery();
+		LoginBean bean1 = null;
+		while (rs.next()) {
+			bean1 = new LoginBean();
+			bean1.setId(rs.getInt(1));
+			bean1.setFirstName(rs.getString(2));
+			bean1.setLastName(rs.getString(3));
+			bean1.setLogin(rs.getString(4));
+			bean1.setPassword(rs.getString(5));
+			bean1.setGender(rs.getString(6));
+			bean1.setDob(rs.getDate(7));
+			bean1.setMobileNo(rs.getString(8));
+
+		}
+		return bean1;
+	
+}}

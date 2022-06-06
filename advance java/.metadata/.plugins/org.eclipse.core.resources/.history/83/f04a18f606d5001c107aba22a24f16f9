@@ -1,0 +1,12 @@
+package Resource_Bundle;
+
+import java.util.ResourceBundle;
+
+public class ResoBnd {
+public static void main(String[] args) {
+	ResourceBundle rb= ResourceBundle.getBundle("Resource_Bundle.rb.app");
+	String url= rb.getString("url");
+	String username= rb.getString("username");
+	String pwd= rb.getString("pwd");
+}
+}

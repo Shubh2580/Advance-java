@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Lo</title>
+</head>
+<body>
+<body align="center">
+	<form action="">
+		<h1>Login</h1>
+		<table align="center">
+			<tr>
+				<th>LoginId*</th>
+				<td><input type="text" name="login" value=""></td>
+			</tr>
+			<tr>
+				<th>Password*</th>
+				<td><input type="password" name="password" value=""></td>
+			</tr>
+           <tr>
+				<td align="center" colspan="2" style="margin-left: 100px">
+				<input type="submit" name="operation" value="Login">
+				<input type="submit" name="operation" value="Signup"></td>
+			</tr>
+		
+		</table>
+	</form>
+
+</body>
+</html>
